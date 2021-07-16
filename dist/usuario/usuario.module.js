@@ -8,6 +8,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UsuarioModule = void 0;
 const common_1 = require("@nestjs/common");
+const is_nome_de_usuario_unico_validator_1 = require("./is-nome-de-usuario-unico.validator");
 const usuario_controller_1 = require("./usuario.controller");
 const usuario_service_1 = require("./usuario.service");
 let UsuarioModule = class UsuarioModule {
@@ -15,7 +16,7 @@ let UsuarioModule = class UsuarioModule {
 UsuarioModule = __decorate([
     common_1.Module({
         controllers: [usuario_controller_1.UsuarioController],
-        providers: [usuario_service_1.UsuarioService],
+        providers: [usuario_service_1.UsuarioService, is_nome_de_usuario_unico_validator_1.IsNomeDeUsuarioUnicoConstraint],
     })
 ], UsuarioModule);
 exports.UsuarioModule = UsuarioModule;

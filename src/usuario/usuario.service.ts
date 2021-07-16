@@ -21,4 +21,5 @@ export class UsuarioService {
     public buscaPorUsuario(nomeDeUsuario: string): Usuario {
         return this.usuarios.find(usuario => usuario.nomeDeUsuario === nomeDeUsuario);
     }
+
 }
