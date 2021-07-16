@@ -1,7 +1,7 @@
 {
   "name": "alurapic-server",
   "version": "0.0.1",
-  "description": "",
+  "description": "Projeto feito no curso APIs REST com NestJS: Buscas, validação, serialização e detalhes arquiteturais",
   "author": "",
   "license": "MIT",
   "scripts": {
@@ -42,7 +42,7 @@
     "ts-node": "^8.4.1",
     "tsc-watch": "^2.4.0",
     "tsconfig-paths": "^3.9.0",
-    "tslint": "^5.20.0",
+    "tslint": "^5.20.1",
     "typescript": "^3.6.3"
   },
   "jest": {
@@ -58,5 +58,17 @@
     },
     "coverageDirectory": "./coverage",
     "testEnvironment": "node"
-  }
+  },
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LiviaDevolder/Projeto-10-NestJS.git"
+  },
+  "bugs": {
+    "url": "https://github.com/LiviaDevolder/Projeto-10-NestJS/issues"
+  },
+  "homepage": "https://github.com/LiviaDevolder/Projeto-10-NestJS#readme"
 }
