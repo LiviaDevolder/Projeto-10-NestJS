@@ -21,6 +21,7 @@ let UsuarioController = class UsuarioController {
         this.usuarioService = usuarioService;
     }
     cria(usuario) {
+        throw new Error('Erro no cadastro de usuário');
         const usuarioCriado = this.usuarioService.cria(usuario);
         return usuarioCriado;
     }
