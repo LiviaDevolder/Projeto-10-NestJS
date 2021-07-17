@@ -14,6 +14,8 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UsuarioController = void 0;
 const common_1 = require("@nestjs/common");
+const nest_response_1 = require("../core/http/nest-response");
+const nest_response_builder_1 = require("../core/http/nest-response-builder");
 const usuario_entity_1 = require("./usuario.entity");
 const usuario_service_1 = require("./usuario.service");
 let UsuarioController = class UsuarioController {
@@ -21,12 +23,23 @@ let UsuarioController = class UsuarioController {
         this.usuarioService = usuarioService;
     }
     cria(usuario) {
-        throw new Error('Erro no cadastro de usuário');
         const usuarioCriado = this.usuarioService.cria(usuario);
-        return usuarioCriado;
+        return new nest_response_builder_1.NestResponseBuilder()
+            .comStatus(common_1.HttpStatus.CREATED)
+            .comHeaders({
+            'Location': `/users/${usuarioCriado.nomeDeUsuario}`,
+        })
+            .comBody(usuarioCriado)
+            .build();
     }
     buscaPorNomeDeUsuario(nomeDeUsuario) {
         const usuarioEncontrado = this.usuarioService.buscaPorUsuario(nomeDeUsuario);
+        if (!usuarioEncontrado) {
+            throw new common_1.NotFoundException({
+                statusCode: common_1.HttpStatus.NOT_FOUND,
+                message: 'Usuário não encontrado.',
+            });
+        }
         return usuarioEncontrado;
     }
 };
@@ -35,7 +48,7 @@ __decorate([
     __param(0, common_1.Body()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [usuario_entity_1.Usuario]),
-    __metadata("design:returntype", usuario_entity_1.Usuario)
+    __metadata("design:returntype", nest_response_1.NestResponse)
 ], UsuarioController.prototype, "cria", null);
 __decorate([
     common_1.Get(':nomeDeUsuario'),

@@ -5,6 +5,7 @@ import { AbstractHttpAdapter, HttpAdapterHost } from '@nestjs/core';
 export class FiltroDeExcecaoHttp implements ExceptionFilter {
 
   private httpAdapter: AbstractHttpAdapter;
+  
   constructor(adapterHost: HttpAdapterHost) {
     this.httpAdapter = adapterHost.httpAdapter;
   }
